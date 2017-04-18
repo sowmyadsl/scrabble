@@ -1,11 +1,8 @@
 class Scrabble
   def word_score(word)
-    word_value = 0
-
-    word.split("").each do |letter|
-      word_value += letter_score(letter)
-    end
-    word_value
+    word.split("").map do |letter|
+      letter_score(letter)
+    end.reduce(:+)
   end
 
   def letter_score(character)
